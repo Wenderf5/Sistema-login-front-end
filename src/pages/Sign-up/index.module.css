@@ -23,6 +23,12 @@
     font-size: 2.5rem;
 }
 
+.txt_login1 {
+    font-family: "Jost", sans-serif;
+    width: 70%;
+    text-align: center;
+}
+
 .div_info {
     width: 40%;
     height: 100%;

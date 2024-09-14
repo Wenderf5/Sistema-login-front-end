@@ -2,8 +2,12 @@ import style from './index.module.css';
 import { Form } from '../../components/Form';
 import icone from '../../assets/00001-1.png';
 import { Link } from 'react-router-dom';
+import { Error } from '../../components/Error';
+import { useState } from 'react';
 
 export function SignIn() {
+    const [error, setError] = useState<boolean>(true);
+
     return (
         <main className={style.main}>
             <div className={style.div_center}>
@@ -19,8 +23,12 @@ export function SignIn() {
                     <img src={icone} width={300} alt="" />
                 </div>
                 <div className={style.div_login}>
-                    <span className={style.txt_login}>Login!</span>
-                    <Form btn_value='Entrar'/>
+                    <span className={style.txt_login}>Bem-vindo!</span>
+                    <span className={style.txt_login1}>Por favor, insira suas informações de login para acessar sua conta e continuar utilizando nossos serviços.</span>
+                    {error && (
+                        <Error label='Usuario ou senha incorretos!' />
+                    )}
+                    <Form btn_value='Entrar' />
                     <span className={style.txt_sign_up}>Ainda não tem uma conta ? <Link to={'/sign-up'}>Crie uma por aqui!</Link></span>
                 </div>
             </div>

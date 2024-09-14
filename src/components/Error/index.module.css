@@ -1,0 +1,7 @@
+.main{
+    padding: 5px 15px;
+    z-index: 1;
+    background-color: white;
+    color: red;
+    font-family: "Jost", sans-serif;
+}
