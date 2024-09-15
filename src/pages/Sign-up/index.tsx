@@ -26,9 +26,16 @@ export function SignUp() {
                     <span className={style.txt_login}>Crie sua conta!</span>
                     <span className={style.txt_login1}>Junte-se à nossa comunidade! Crie uma conta para ter acesso imediato a todas as nossas ferramentas e serviços.</span>
                     {error && (
-                        <Error label='Este usuário já existe!'/>
+                        <Error label='Este usuário já existe!' />
                     )}
-                    <Form btn_value='Criar conta' />
+                    <Form
+                        action='http://localhost:8080'
+                        btn_value='Criar conta'
+                        place_holder_a='Ex: Steve@123ght'
+                        label_a='Nome do usuário:'
+                        place_holder_b='Ex: 1234567890'
+                        label_b='Senha:'
+                    />
                     <span className={style.txt_sign_up}>Já tem uma conta ? <Link to={'/sign-in'}>Faça login por aqui!</Link></span>
                 </div>
             </div>

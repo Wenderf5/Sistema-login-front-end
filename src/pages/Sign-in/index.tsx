@@ -28,7 +28,14 @@ export function SignIn() {
                     {error && (
                         <Error label='Usuario ou senha incorretos!' />
                     )}
-                    <Form btn_value='Entrar' />
+                    <Form
+                        action='http://localhost:8080/sign-in'
+                        btn_value='Entrar'
+                        place_holder_a='Ex: Steve@123ght'
+                        label_a='Nome do usuário:'
+                        place_holder_b='Ex: 1234567890'
+                        label_b='Senha:'
+                    />
                     <span className={style.txt_sign_up}>Ainda não tem uma conta ? <Link to={'/sign-up'}>Crie uma por aqui!</Link></span>
                 </div>
             </div>

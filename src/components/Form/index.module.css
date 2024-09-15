@@ -10,6 +10,32 @@ form {
     width: 100%;
 }
 
+.input_a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input_b {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.label {
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+}
+
+.input {
+    height: 35px;
+    width: 100%;
+    border: 1px black solid;
+    padding-left: 10px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px #d5d5d5;
+}
+
 .btn_submit {
     min-width: 80px;
     font-family: "Jost", sans-serif;
