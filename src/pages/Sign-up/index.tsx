@@ -1,12 +1,12 @@
 import style from './index.module.css';
-import { Form } from '../../components/Form';
 import icone from '../../assets/00001-1.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Error } from '../../components/Error';
 import { useState } from 'react';
 
 export function SignUp() {
-    const [error, setError] = useState<boolean>(true);
+    const [error, setError] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     return (
         <main className={style.main}>
@@ -28,14 +28,48 @@ export function SignUp() {
                     {error && (
                         <Error label='Este usuário já existe!' />
                     )}
-                    <Form
+                    <form
                         action='http://localhost:8080/sign-up'
-                        btn_value='Criar conta'
-                        place_holder_a='Ex: Steve@123ght'
-                        label_a='Nome do usuário:'
-                        place_holder_b='Ex: 1234567890'
-                        label_b='Senha:'
-                    />
+                        method="post"
+                        onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
+                            e.preventDefault();
+                            const formData = new FormData(e.currentTarget);
+                            const formObject: { [key: string]: string } = {};
+                            formData.forEach((value, key) => {
+                                formObject[key] = value.toString();
+                            });
+                            const response = await fetch('http://localhost:8080/sign-up', {
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                method: 'POST',
+                                body: JSON.stringify(formObject)
+                            });
+                            const result = await response.json();
+                            if (result === 201) {
+                                navigate('/sign-in');
+                            } else {
+                                console.log(result)
+                                setError(true);
+                                setTimeout(() => {
+                                    setError(false);
+                                }, 3000)
+                            }
+                        }}>
+                        <div className={style.input_a}>
+                            <label className={style.label} htmlFor="">Nome de usuário:</label>
+                            <input className={style.input} type="text" name="user_name" id="" placeholder='Ex: Steve@123ght' />
+                        </div>
+                        <div className={style.input_b}>
+                            <label className={style.label} htmlFor="">Senha:</label>
+                            <input className={style.input} type="password" name="password" id="" placeholder='Ex: 1234567890' />
+                        </div>
+                        <input
+                            className={style.btn_submit}
+                            type="submit"
+                            value='Criar Conta'
+                        />
+                    </form>
                     <span className={style.txt_sign_up}>Já tem uma conta ? <Link to={'/sign-in'}>Faça login por aqui!</Link></span>
                 </div>
             </div>

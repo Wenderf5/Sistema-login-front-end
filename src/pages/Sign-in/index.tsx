@@ -1,17 +1,16 @@
 import style from './index.module.css';
-import { Form } from '../../components/Form';
 import icone from '../../assets/00001-1.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Error } from '../../components/Error';
-import { useContext } from 'react';
-import { ErroContext } from '../../context/erro';
+import { useState } from 'react';
 
 export function SignIn() {
-    const erroContext = useContext(ErroContext);
-    if (!erroContext) {
-        return "Erro no contexto 'erro' em 'src/pages/sign-in' linha 12!"
-    }
-    const { error, setError } = erroContext;
+    const [error, setError] = useState<boolean>(false);
+    const navigate = useNavigate();
+
+    const setTokenCookie = (token: string) => {
+        document.cookie = "token=" + token + ";path=/;Secure;SameSite=Strict";
+    };
 
     return (
         <main className={style.main}>
@@ -33,14 +32,48 @@ export function SignIn() {
                     {error && (
                         <Error label='Usuario ou senha incorretos!' />
                     )}
-                    <Form
+                    <form
                         action='http://localhost:8080/sign-in'
-                        btn_value='Entrar'
-                        place_holder_a='Ex: Steve@123ght'
-                        label_a='Nome do usuário:'
-                        place_holder_b='Ex: 1234567890'
-                        label_b='Senha:'
-                    />
+                        method="post"
+                        onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
+                            e.preventDefault();
+                            const formData = new FormData(e.currentTarget);
+                            const formObject: { [key: string]: string } = {};
+                            formData.forEach((value, key) => {
+                                formObject[key] = value.toString();
+                            });
+                            const response = await fetch('http://localhost:8080/sign-in', {
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                method: 'POST',
+                                body: JSON.stringify(formObject)
+                            });
+                            const result = await response.json();
+                            if (result.code === 200) {
+                                setTokenCookie(result.token);
+                                navigate('/');
+                            } else {
+                                setError(true);
+                                setTimeout(() => {
+                                    setError(false);
+                                }, 3000)
+                            }
+                        }}>
+                        <div className={style.input_a}>
+                            <label className={style.label} htmlFor="">Nome de usuário:</label>
+                            <input className={style.input} type="text" name="user_name" id="" placeholder='Ex: Steve@123ght' />
+                        </div>
+                        <div className={style.input_b}>
+                            <label className={style.label} htmlFor="">Senha:</label>
+                            <input className={style.input} type="password" name="password" id="" placeholder='Ex: 1234567890' />
+                        </div>
+                        <input
+                            className={style.btn_submit}
+                            type="submit"
+                            value="Entrar"
+                        />
+                    </form>
                     <span className={style.txt_sign_up}>Ainda não tem uma conta ? <Link to={'/sign-up'}>Crie uma por aqui!</Link></span>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 //Pages
 import { SignIn } from "../pages/Sign-in";
 import { SignUp } from "../pages/Sign-up";
-import { ErroContextProvider } from "../context/erro";
+import { Dashboard } from "../pages/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -14,17 +14,19 @@ export const router = createBrowserRouter([
             {
                 path: '/sign-in',
                 element: (
-                    <ErroContextProvider>
                         <SignIn />
-                    </ErroContextProvider>
                 )
             },
             {
                 path: '/sign-up',
                 element: (
-                    <ErroContextProvider>
                         <SignUp />
-                    </ErroContextProvider>
+                )
+            },
+            {
+                path: '/',
+                element: (
+                    <Dashboard />
                 )
             }
         ]
