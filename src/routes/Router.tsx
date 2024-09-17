@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 //Pages
 import { SignIn } from "../pages/Sign-in";
 import { SignUp } from "../pages/Sign-up";
+import { ErroContextProvider } from "../context/erro";
 
 export const router = createBrowserRouter([
     {
@@ -12,11 +13,19 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/sign-in',
-                element: <SignIn />
+                element: (
+                    <ErroContextProvider>
+                        <SignIn />
+                    </ErroContextProvider>
+                )
             },
             {
                 path: '/sign-up',
-                element: <SignUp />
+                element: (
+                    <ErroContextProvider>
+                        <SignUp />
+                    </ErroContextProvider>
+                )
             }
         ]
     }

@@ -29,7 +29,7 @@ export function SignUp() {
                         <Error label='Este usuário já existe!' />
                     )}
                     <Form
-                        action='http://localhost:8080'
+                        action='http://localhost:8080/sign-up'
                         btn_value='Criar conta'
                         place_holder_a='Ex: Steve@123ght'
                         label_a='Nome do usuário:'

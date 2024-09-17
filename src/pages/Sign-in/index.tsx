@@ -3,10 +3,15 @@ import { Form } from '../../components/Form';
 import icone from '../../assets/00001-1.png';
 import { Link } from 'react-router-dom';
 import { Error } from '../../components/Error';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { ErroContext } from '../../context/erro';
 
 export function SignIn() {
-    const [error, setError] = useState<boolean>(true);
+    const erroContext = useContext(ErroContext);
+    if (!erroContext) {
+        return "Erro no contexto 'erro' em 'src/pages/sign-in' linha 12!"
+    }
+    const { error, setError } = erroContext;
 
     return (
         <main className={style.main}>
