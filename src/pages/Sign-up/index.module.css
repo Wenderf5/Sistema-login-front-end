@@ -29,30 +29,6 @@
     text-align: center;
 }
 
-.div_info {
-    width: 40%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.txt_ttl{
-    font-family: "Jost", sans-serif;
-    font-weight: 600;
-    font-size: 2.5rem;
-    color: white;
-}
-
-.txt_info{
-    width: 90%;
-    font-family: "Jost", sans-serif;
-    text-align: center;
-    font-size: 1.2rem;
-    color: white;
-}
-
 .div_login {
     width: 60%;
     height: 100%;
@@ -70,53 +46,4 @@
 
 .txt_sign_up a{
     text-decoration: none;
-}
-
-/*Novos styles */
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    width: 85%;
-}
-
-.input_a {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.input_b {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.label {
-    font-family: "Jost", sans-serif;
-    font-weight: 500;
-}
-
-.input {
-    height: 35px;
-    width: 100%;
-    border: 1px black solid;
-    padding-left: 10px;
-    border-radius: 3px;
-    box-shadow: 0px 0px 10px #d5d5d5;
-}
-
-.btn_submit {
-    min-width: 80px;
-    font-family: "Jost", sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 7px 15px;
-    border: 1px black solid;
-    background-color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0px 0px 10px #d5d5d5;
 }

@@ -1,0 +1,23 @@
+.div_info {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.txt_ttl {
+    font-family: "Jost", sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.txt_info {
+    width: 90%;
+    font-family: "Jost", sans-serif;
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+}
