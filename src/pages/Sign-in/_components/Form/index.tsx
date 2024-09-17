@@ -1,5 +1,6 @@
 import style from './index.module.css';
 import { useNavigate } from 'react-router-dom';
+import { validateForm } from '../../../../utils/validateForm';
 
 interface props {
     setError: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,6 +22,11 @@ export function Form({ setError }: props) {
                 formData.forEach((value, key) => {
                     formObject[key] = value.toString();
                 });
+
+                if (!validateForm(formObject)) {
+                    return;
+                }
+
                 const response = await fetch('http://localhost:8080/sign-in', {
                     headers: {
                         'Content-Type': 'application/json'
@@ -41,11 +47,11 @@ export function Form({ setError }: props) {
             }}>
             <div className={style.input_a}>
                 <label className={style.label} htmlFor="">Nome de usuário:</label>
-                <input className={style.input} type="text" name="user_name" id="" placeholder='Ex: Steve@123ght' />
+                <input className={style.input} required type="text" name="user_name" id="" placeholder='Ex: Steve@123ght' />
             </div>
             <div className={style.input_b}>
                 <label className={style.label} htmlFor="">Senha:</label>
-                <input className={style.input} type="password" name="password" id="" placeholder='Ex: 1234567890' />
+                <input className={style.input} required type="password" name="password" id="" placeholder='Ex: 1234567890' />
             </div>
             <input
                 className={style.btn_submit}

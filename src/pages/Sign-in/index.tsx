@@ -16,7 +16,7 @@ export function SignIn() {
                     <span className={style.txt_login}>Bem-vindo!</span>
                     <span className={style.txt_login1}>Por favor, insira suas informações de login para acessar sua conta e continuar utilizando nossos serviços.</span>
                     {error && (
-                        <Error label='Usuario ou senha incorretos!' />
+                        <Error label='Usuário ou senha incorretos!' />
                     )}
                     <Form setError={setError} />
                     <span className={style.txt_sign_up}>Ainda não tem uma conta ? <Link to={'/sign-up'}>Crie uma por aqui!</Link></span>
