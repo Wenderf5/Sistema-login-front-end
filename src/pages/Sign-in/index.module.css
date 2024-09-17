@@ -42,8 +42,16 @@
 
 .txt_sign_up {
     font-family: "Jost", sans-serif;
+    font-weight: 500;
 }
 
 .txt_sign_up a {
     text-decoration: none;
+    color: #3483fa;
+    transition: 200ms;
+}
+
+.txt_sign_up a:hover {
+    text-decoration: none;
+    color: #0d4395;
 }
