@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { Error } from '../../components/Error';
 import { useState, useContext } from 'react';
 import { Form } from './_components/Form';
-import { Validation } from '../../components/Validation';
+import { Notification } from '../../components/Notification';
 import { Context } from '../../context/context';
+import { BadgeCheck } from 'lucide-react';
 
 export function SignIn() {
     const context = useContext(Context);
@@ -18,7 +19,12 @@ export function SignIn() {
     return (
         <main className={style.main}>
             <div className={style.notification_container}>
-                {validation && (<Validation />)}
+                {validation && (
+                    <Notification
+                        icon={<BadgeCheck color='green' />}
+                        txt='Cadastro concluído! Faça login para aproveitar os recursos.'
+                    />
+                )}
             </div>
             <div className={style.div_center}>
                 <Info />
