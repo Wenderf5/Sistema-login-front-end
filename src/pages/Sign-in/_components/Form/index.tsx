@@ -7,9 +7,6 @@ interface props {
 }
 export function Form({ setError }: props) {
     const navigate = useNavigate();
-    const setTokenCookie = (token: string) => {
-        document.cookie = "token=" + token + ";path=/;Secure;SameSite=Strict";
-    };
 
     return (
         <form
@@ -29,20 +26,20 @@ export function Form({ setError }: props) {
 
                 const response = await fetch('http://localhost:8080/sign-in', {
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
                     method: 'POST',
+                    credentials: 'include',
                     body: JSON.stringify(formObject)
                 });
-                const result = await response.json();
-                if (result.code === 200) {
-                    setTokenCookie(result.token);
-                    navigate('/');
+                
+                if (response.status === 200) {
+                        navigate('/');
                 } else {
                     setError(true);
                     setTimeout(() => {
                         setError(false);
-                    }, 3000)
+                    }, 3000);
                 }
             }}>
             <div className={style.input_a}>

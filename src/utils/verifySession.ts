@@ -6,10 +6,8 @@ export async function verifySession() {
         headers: {
             'Content-Type': 'application/json'
         },
-        method: 'POST',
-        body: JSON.stringify({
-            token: document.cookie.slice(6)
-        })
+        method: 'GET',
+        credentials: 'include'
     });
     const result = await response.json();
     if (result === 401) {
