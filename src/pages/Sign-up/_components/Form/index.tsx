@@ -1,12 +1,20 @@
 import style from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { validateForm } from '../../../../utils/validateForm';
+import { Context } from '../../../../context/context';
+import { useContext } from 'react';
 
 interface props {
     setError: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export function Form({ setError }: props) {
     const navigate = useNavigate();
+
+    const context = useContext(Context);
+    if (!context) {
+        return "Erro no context 'context' 'src/pages/sign-up/_components/Form' linha 15!"
+    }
+    const { setValidation } = context;
 
     return (
         <form
@@ -33,9 +41,12 @@ export function Form({ setError }: props) {
                 });
                 const result = await response.json();
                 if (result === 201) {
+                    setValidation(true);
+                    setTimeout(() => {
+                        setValidation(false)
+                    }, 5000);
                     navigate('/sign-in');
                 } else {
-                    console.log(result)
                     setError(true);
                     setTimeout(() => {
                         setError(false);

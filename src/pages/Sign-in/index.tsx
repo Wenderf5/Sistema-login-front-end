@@ -2,14 +2,24 @@ import style from './index.module.css';
 import { Info } from './_components/Info/Info';
 import { Link } from 'react-router-dom';
 import { Error } from '../../components/Error';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Form } from './_components/Form';
+import { Validation } from '../../components/Validation';
+import { Context } from '../../context/context';
 
 export function SignIn() {
+    const context = useContext(Context);
+    if (!context) {
+        return "Erro no context 'context' 'src/pages/sign-in' linha 13!"
+    }
+    const { validation } = context;
     const [error, setError] = useState<boolean>(false);
 
     return (
         <main className={style.main}>
+            <div className={style.notification_container}>
+                {validation && (<Validation />)}
+            </div>
             <div className={style.div_center}>
                 <Info />
                 <div className={style.div_login}>

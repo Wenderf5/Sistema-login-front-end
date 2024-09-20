@@ -1,6 +1,31 @@
+@keyframes loading {
+    0% {
+        transform: translateX(-20%);
+    }
+
+    25% {
+        transform: translateX(-15%);
+    }
+
+    50% {
+        transform: translateX(-10%);
+    }
+
+    75% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
 .main {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #F4F4F4;
 }
 
@@ -9,12 +34,10 @@
     width: 65%;
     height: 80%;
     display: flex;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 10px;
     box-shadow: 0px 0px 10px #CECECE;
     background: linear-gradient(45deg, #3AAEA1, #3DB498, #3DB498, #4CBE9A);
+    animation: loading 300ms linear;
 }
 
 .txt_login {

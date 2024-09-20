@@ -1,5 +1,6 @@
 import { App } from "../App";
 import { createBrowserRouter } from "react-router-dom";
+import { ContextProvider } from "../context/context";
 
 //Pages
 import { SignIn } from "../pages/Sign-in";
@@ -14,19 +15,26 @@ export const router = createBrowserRouter([
             {
                 path: '/sign-in',
                 element: (
+                    <ContextProvider>
                         <SignIn />
+                    </ContextProvider>
+
                 )
             },
             {
                 path: '/sign-up',
                 element: (
+                    <ContextProvider>
                         <SignUp />
+                    </ContextProvider>
                 )
             },
             {
                 path: '/',
                 element: (
-                    <Dashboard />
+                    <ContextProvider>
+                        <Dashboard />
+                    </ContextProvider>
                 )
             }
         ]
