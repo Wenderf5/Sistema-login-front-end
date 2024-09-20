@@ -8,9 +8,17 @@ export function Dashboard() {
     verifySession();
     const navigate = useNavigate();
 
-    function logout() {
-        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; Secure; SameSite=Strict";
-        navigate('/sign-in');
+    async function logout() {
+        const response = await fetch('http://localhost:8080/logout', {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'GET',
+            credentials: 'include'
+        });
+        if (response.status === 200) {
+            navigate('/sign-in');
+        }
     }
 
     return (
