@@ -13,7 +13,7 @@ export function Form({ setError }: props) {
 
     return (
         <form
-            action='https://sistema-login-back-end-production.up.railway.app/sign-in'
+            action='http://localhost:8080/sign-in'
             method="post"
             onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
@@ -27,7 +27,7 @@ export function Form({ setError }: props) {
                     return;
                 }
 
-                const response = await fetch('https://sistema-login-back-end-production.up.railway.app/sign-in', {
+                const response = await fetch('http://localhost:8080/sign-in', {
                     headers: {
                         'Content-Type': 'application/json',
                     },

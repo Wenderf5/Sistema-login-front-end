@@ -1,5 +1,5 @@
 export async function verifySession(): Promise<boolean> {
-    const response = await fetch('https://sistema-login-back-end-production.up.railway.app/verify-session', {
+    const response = await fetch('http://localhost:8080/verify-session', {
         headers: {
             'Content-Type': 'application/json'
         },

@@ -18,7 +18,7 @@ export function Dashboard() {
     }, [])
 
     async function logout() {
-        const response = await fetch('https://sistema-login-back-end-production.up.railway.app/logout', {
+        const response = await fetch('http://localhost:8080/logout', {
             headers: {
                 'Content-Type': 'application/json',
             },
