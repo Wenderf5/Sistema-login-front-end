@@ -18,7 +18,7 @@ export function Dashboard() {
     }, [])
 
     async function logout() {
-        const response = await fetch('https://sistema-login-back-7sj862rro-wenders-projects-77aa5607.vercel.app/logout', {
+        const response = await fetch('https://sistema-login-back-end-production.up.railway.app/logout', {
             headers: {
                 'Content-Type': 'application/json',
             },
