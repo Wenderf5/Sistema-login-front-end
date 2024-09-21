@@ -1,5 +1,5 @@
 export async function verifySession(): Promise<boolean> {
-    const response = await fetch('http://localhost:8080/verify-session', {
+    const response = await fetch('https://sistema-login-back-7sj862rro-wenders-projects-77aa5607.vercel.app/verify-session', {
         headers: {
             'Content-Type': 'application/json'
         },

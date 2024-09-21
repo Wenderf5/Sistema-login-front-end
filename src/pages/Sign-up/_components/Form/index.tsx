@@ -20,7 +20,7 @@ export function Form({ setError }: props) {
 
     return (
         <form
-            action='http://localhost:8080/sign-up'
+            action='https://sistema-login-back-7sj862rro-wenders-projects-77aa5607.vercel.app/sign-up'
             method="post"
             onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
@@ -34,7 +34,7 @@ export function Form({ setError }: props) {
                     return;
                 }
 
-                const response = await fetch('http://localhost:8080/sign-up', {
+                const response = await fetch('https://sistema-login-back-7sj862rro-wenders-projects-77aa5607.vercel.app/sign-up', {
                     headers: {
                         'Content-Type': 'application/json'
                     },
