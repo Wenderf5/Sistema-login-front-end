@@ -1,7 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
-export async function verifySession() {
-    const navigate = useNavigate();
+export async function verifySession(): Promise<boolean> {
     const response = await fetch('http://localhost:8080/verify-session', {
         headers: {
             'Content-Type': 'application/json'
@@ -11,6 +8,8 @@ export async function verifySession() {
     });
     const result = await response.json();
     if (result === 401) {
-        navigate('/sign-in');
+        return false;
+    } else {
+        return true;
     }
 }

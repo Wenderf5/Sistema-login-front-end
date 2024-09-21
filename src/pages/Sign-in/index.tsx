@@ -1,14 +1,25 @@
 import style from './index.module.css';
 import { Info } from './_components/Info/Info';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Error } from '../../components/Error';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Form } from './_components/Form';
 import { Notification } from '../../components/Notification';
 import { Context } from '../../context/context';
 import { BadgeCheck } from 'lucide-react';
+import { verifySession } from '../../utils/verifySession';
 
 export function SignIn() {
+    const navigate = useNavigate();
+    useEffect(() => {
+        async function sessionVerify() {
+            const session = await verifySession();
+            if (session) {
+                navigate('/')
+            }
+        }
+        sessionVerify();
+    }, [])
     const context = useContext(Context);
     if (!context) {
         return "Erro no context 'context' 'src/pages/sign-in' linha 13!"

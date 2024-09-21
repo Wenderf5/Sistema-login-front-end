@@ -2,13 +2,15 @@ import style from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { validateForm } from '../../../../utils/validateForm';
 import { Context } from '../../../../context/context';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { Eye, EyeOff } from 'lucide-react';
 
 interface props {
     setError: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export function Form({ setError }: props) {
     const navigate = useNavigate();
+    const [isVisible, setIsVisible] = useState<boolean>(false);
 
     const context = useContext(Context);
     if (!context) {
@@ -59,7 +61,10 @@ export function Form({ setError }: props) {
             </div>
             <div className={style.input_b}>
                 <label className={style.label} htmlFor="">Senha:</label>
-                <input className={style.input} required type="password" name="password" id="" placeholder='Ex: 1234567890' />
+                <div className={style.input_div}>
+                    <input required type={isVisible ? "text" : "password"} name="password" id="" placeholder='Ex: 1234567890' />
+                    <button type='button' onClick={() => setIsVisible(!isVisible)}>{isVisible ? <Eye size={21} /> : <EyeOff size={21} />}</button>
+                </div>
             </div>
             <input
                 className={style.btn_submit}
