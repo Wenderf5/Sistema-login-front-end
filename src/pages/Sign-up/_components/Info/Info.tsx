@@ -3,7 +3,7 @@ import icone from '../../../../assets/00001-1.png';
 
 export function Info() {
     return (
-        <div className={style.div_info}>
+        <div className={style.main}>
             <span className={style.txt_ttl}>Seja bem-vindo!</span>
             <span className={style.txt_info}>
                 Este é um sistema de

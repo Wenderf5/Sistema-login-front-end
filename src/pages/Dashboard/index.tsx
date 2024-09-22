@@ -34,7 +34,7 @@ export function Dashboard() {
         <main className={style.main}>
             <div className={style.div_center}>
                 <span className={style.txt_ttl}>Seja bem-vindo!</span>
-                <img src={icone} width={400} alt="" />
+                <img className={style.img} src={icone} alt="" />
                 <button className={style.btn} onClick={() => logout()}><LogOut size={18} />Deslogar</button>
             </div>
         </main>
