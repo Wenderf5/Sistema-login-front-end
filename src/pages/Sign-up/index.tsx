@@ -1,23 +1,11 @@
 import style from './index.module.css';
 import { Info } from './_components/Info/Info';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Error } from '../../components/Error';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Form } from './_components/Form';
-import { verifySession } from '../../utils/verifySession';
-
 
 export function SignUp() {
-    const navigate = useNavigate();
-    useEffect(() => {
-        async function sessionVerify() {
-            const session = await verifySession();
-            if (session) {
-                navigate('/')
-            }
-        }
-        sessionVerify();
-    }, [])
     const [error, setError] = useState<boolean>(false);
 
     return (

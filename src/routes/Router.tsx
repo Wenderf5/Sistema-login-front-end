@@ -6,6 +6,7 @@ import { ContextProvider } from "../context/context";
 import { SignIn } from "../pages/Sign-in";
 import { SignUp } from "../pages/Sign-up";
 import { Dashboard } from "../pages/Dashboard";
+import { Auth } from "../Auth";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +17,9 @@ export const router = createBrowserRouter([
                 path: '/sign-in',
                 element: (
                     <ContextProvider>
-                        <SignIn />
+                        <Auth url1="/sign-in" url2="/">
+                            <SignIn />
+                        </Auth>
                     </ContextProvider>
 
                 )
@@ -25,7 +28,9 @@ export const router = createBrowserRouter([
                 path: '/sign-up',
                 element: (
                     <ContextProvider>
-                        <SignUp />
+                        <Auth url1="/sign-up" url2="/">
+                            <SignUp />
+                        </Auth>
                     </ContextProvider>
                 )
             },
@@ -33,7 +38,9 @@ export const router = createBrowserRouter([
                 path: '/',
                 element: (
                     <ContextProvider>
-                        <Dashboard />
+                        <Auth url1="/sign-in" url2="/">
+                            <Dashboard />
+                        </Auth>
                     </ContextProvider>
                 )
             }

@@ -1,22 +1,11 @@
 import style from './index.module.css';
 import icone from '../../assets/00001-1.png';
 import { LogOut } from 'lucide-react';
-import { verifySession } from '../../utils/verifySession';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 export function Dashboard() {
     const endpoint = import.meta.env.VITE_ENDPOINT_BACK_END;
     const navigate = useNavigate();
-    useEffect(() => {
-        async function sessionVerify() {
-            const session = await verifySession();
-            if (!session) {
-                navigate('/sign-in')
-            }
-        }
-        sessionVerify();
-    }, [])
 
     async function logout() {
         const response = await fetch(`${endpoint}/logout`, {
