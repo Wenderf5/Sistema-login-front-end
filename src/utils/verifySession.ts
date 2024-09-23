@@ -1,5 +1,6 @@
 export async function verifySession(): Promise<boolean> {
-    const response = await fetch('http://localhost:8080/verify-session', {
+    const endpoint = import.meta.env.VITE_ENDPOINT_BACK_END;
+    const response = await fetch(`${endpoint}/verify-session`, {
         headers: {
             'Content-Type': 'application/json'
         },

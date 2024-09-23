@@ -9,6 +9,7 @@ interface props {
     setError: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export function Form({ setError }: props) {
+    const endpoint = import.meta.env.VITE_ENDPOINT_BACK_END;
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
@@ -20,7 +21,7 @@ export function Form({ setError }: props) {
 
     return (
         <form
-            action='http://localhost:8080/sign-up'
+            action={`${endpoint}/sign-up`}
             method="post"
             onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
@@ -34,7 +35,7 @@ export function Form({ setError }: props) {
                     return;
                 }
 
-                const response = await fetch('http://localhost:8080/sign-up', {
+                const response = await fetch(`${endpoint}/sign-up`, {
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -71,6 +72,6 @@ export function Form({ setError }: props) {
                 type="submit"
                 value='Criar Conta'
             />
-        </form>
+        </form >
     )
 }

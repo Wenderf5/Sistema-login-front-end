@@ -8,12 +8,13 @@ interface props {
     setError: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export function Form({ setError }: props) {
+    const endpoint = import.meta.env.VITE_ENDPOINT_BACK_END;
     const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
     return (
         <form
-            action='http://localhost:8080/sign-in'
+            action={`${endpoint}/sign-in`}
             method="post"
             onSubmit={async (e: React.FormEvent<HTMLFormElement>) => {
                 e.preventDefault();
@@ -27,7 +28,7 @@ export function Form({ setError }: props) {
                     return;
                 }
 
-                const response = await fetch('http://localhost:8080/sign-in', {
+                const response = await fetch(`${endpoint}/sign-in`, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
@@ -53,7 +54,7 @@ export function Form({ setError }: props) {
                 <label className={style.label} htmlFor="">Senha:</label>
                 <div className={style.input_div}>
                     <input required type={isVisible ? "text" : "password"} name="password" id="" placeholder='Ex: 1234567890' />
-                    <button type='button' onClick={() => setIsVisible(!isVisible)}>{isVisible ? <Eye size={21} /> : <EyeOff size={21}/>}</button>
+                    <button type='button' onClick={() => setIsVisible(!isVisible)}>{isVisible ? <Eye size={21} /> : <EyeOff size={21} />}</button>
                 </div>
             </div>
             <input

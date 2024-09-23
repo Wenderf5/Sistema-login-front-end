@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 export function Dashboard() {
+    const endpoint = import.meta.env.VITE_ENDPOINT_BACK_END;
     const navigate = useNavigate();
     useEffect(() => {
         async function sessionVerify() {
@@ -18,7 +19,7 @@ export function Dashboard() {
     }, [])
 
     async function logout() {
-        const response = await fetch('http://localhost:8080/logout', {
+        const response = await fetch(`${endpoint}/logout`, {
             headers: {
                 'Content-Type': 'application/json',
             },
