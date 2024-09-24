@@ -4,20 +4,20 @@ import { verifySession } from "../utils/verifySession";
 
 interface props {
     children: React.ReactNode;
-    url1: string;
-    url2: string;
+    loggedOut: string;
+    loggedIn: string;
 }
 
-export function Auth({ children, url1, url2 }: props) {
+export function Auth({ children, loggedOut, loggedIn }: props) {
     const navigate = useNavigate();
 
     useEffect(() => {
         async function sessionVerify() {
             const session = await verifySession();
-            if (!session) {
-                navigate(url1);
+            if (session) {
+                navigate(loggedIn);
             } else {
-                navigate(url2);
+                navigate(loggedOut);
             }
         }
         sessionVerify();

@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
                 path: '/sign-in',
                 element: (
                     <ContextProvider>
-                        <Auth url1="/sign-in" url2="/">
+                        <Auth loggedOut="/sign-in" loggedIn="/">
                             <SignIn />
                         </Auth>
                     </ContextProvider>
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
                 path: '/sign-up',
                 element: (
                     <ContextProvider>
-                        <Auth url1="/sign-up" url2="/">
+                        <Auth loggedOut="/sign-up" loggedIn="/">
                             <SignUp />
                         </Auth>
                     </ContextProvider>
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
                 path: '/',
                 element: (
                     <ContextProvider>
-                        <Auth url1="/sign-in" url2="/">
+                        <Auth loggedOut="/sign-in" loggedIn="/">
                             <Dashboard />
                         </Auth>
                     </ContextProvider>
