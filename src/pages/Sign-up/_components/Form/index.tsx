@@ -10,8 +10,8 @@ interface props {
 }
 export function Form({ setError }: props) {
     const endpoint = import.meta.env.VITE_ENDPOINT_BACK_END;
-    const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const context = useContext(Context);
     if (!context) {

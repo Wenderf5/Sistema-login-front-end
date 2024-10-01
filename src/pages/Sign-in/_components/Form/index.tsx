@@ -4,13 +4,14 @@ import { validateForm } from '../../../../utils/validateForm';
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 
-interface props {
+interface Props {
     setError: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export function Form({ setError }: props) {
+
+export function Form({ setError }: Props) {
     const endpoint = import.meta.env.VITE_ENDPOINT_BACK_END;
-    const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     return (
         <form
@@ -47,14 +48,29 @@ export function Form({ setError }: props) {
                 }
             }}>
             <div className={style.input_a}>
-                <label className={style.label} htmlFor="">Nome de usuário:</label>
-                <input className={style.input} required type="text" name="user_name" id="" placeholder='Ex: Steve@123ght' />
+                <label className={style.label} htmlFor="user_name">Nome de usuário:</label>
+                <input
+                    className={style.input}
+                    required
+                    type="text"
+                    name="user_name"
+                    id="user_name"
+                    placeholder="Ex: Steve@123ght"
+                />
             </div>
             <div className={style.input_b}>
-                <label className={style.label} htmlFor="">Senha:</label>
+                <label className={style.label} htmlFor="password">Senha:</label>
                 <div className={style.input_div}>
-                    <input required type={isVisible ? "text" : "password"} name="password" id="" placeholder='Ex: 1234567890' />
-                    <button type='button' onClick={() => setIsVisible(!isVisible)}>{isVisible ? <Eye size={21} /> : <EyeOff size={21} />}</button>
+                    <input
+                        required
+                        type={isVisible ? "text" : "password"}
+                        name="password"
+                        id="password"
+                        placeholder="Ex: 1234567890"
+                    />
+                    <button type="button" onClick={() => setIsVisible(!isVisible)}>
+                        {isVisible ? <Eye size={21} /> : <EyeOff size={21} />}
+                    </button>
                 </div>
             </div>
             <input
@@ -63,5 +79,5 @@ export function Form({ setError }: props) {
                 value="Entrar"
             />
         </form>
-    )
+    );
 }
