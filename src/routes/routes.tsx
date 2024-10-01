@@ -1,12 +1,12 @@
-import { App } from "../App";
 import { createBrowserRouter, redirect } from "react-router-dom";
 import { ContextProvider } from "../context/context";
+import { verifySession } from "../utils/verifySession";
 
 //Pages
+import { App } from "../App";
 import { SignIn } from "../pages/Sign-in";
 import { SignUp } from "../pages/Sign-up";
 import { Dashboard } from "../pages/Dashboard";
-import { verifySession } from "../utils/verifySession";
 
 export const routes = createBrowserRouter([
     {
