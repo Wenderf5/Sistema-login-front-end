@@ -23,7 +23,7 @@
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
 
     .txt_ttl {
         font-family: "Jost", sans-serif;
@@ -42,7 +42,7 @@
 }
 
 
-@media screen and (min-width: 480px) and (max-width: 768px) {
+@media (min-width: 480px) and (max-width: 768px) {
 
     .main {
         display: none;
@@ -55,7 +55,7 @@
 }
 
 
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
 
     .main {
         display: none;
