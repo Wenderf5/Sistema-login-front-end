@@ -73,11 +73,10 @@ export function Form({ setError }: Props) {
                     </button>
                 </div>
             </div>
-            <input
+            <button
                 className={style.btn_submit}
                 type="submit"
-                value="Entrar"
-            />
+            >Entrar</button>
         </form>
     );
 }
